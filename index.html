@@ -127,9 +127,20 @@
           <li><strong>Growth stage:</strong> <span id="dog-stage"></span></li>
           <li><strong>Happiness:</strong> <span id="dog-happiness"></span></li>
         </ul>
+
+        <!-- Growth bar: a simple visual that fills as the dog gets older. -->
+        <div class="growth">
+          <span class="growth-label">Growth</span>
+          <div class="growth-bar">
+            <div id="growth-fill" class="growth-fill"></div>
+          </div>
+        </div>
+
         <div class="dog-actions">
           <button id="feed-button" class="care-button" type="button">Feed</button>
           <button id="play-button" class="care-button" type="button">Play</button>
+          <button id="next-day-button" class="care-button" type="button">Next Day</button>
+          <button id="start-over-button" class="start-over-button" type="button">Start Over</button>
         </div>
       </article>
     </section>

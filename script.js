@@ -33,10 +33,17 @@ petButtons.forEach(function (button) {
 
 // ---------------------------------------------------------------
 // 3) "My Virtual Dog" feature
-// Lets a visitor adopt a dog, then feed and play with it.
+// Adopt a dog, then feed, play, advance days, and start over.
+// The dog is saved in the browser so it survives a page refresh.
 // ---------------------------------------------------------------
 
-// One variable holds the adopted dog. null means nobody is adopted yet.
+// The single saved dog lives in localStorage under this key.
+// localStorage is a tiny store built into every browser. The data is
+// saved on THIS computer, inside the browser, for THIS website only.
+// (You can peek at it in DevTools -> Application -> Local Storage.)
+const STORAGE_KEY = "virtualDogParkPetV1";
+
+// myDog holds the adopted dog in memory. null means nobody is adopted yet.
 let myDog = null;
 
 // Grab the page elements we will use.
@@ -50,9 +57,12 @@ const dogBreed = document.getElementById("dog-breed");
 const dogDay = document.getElementById("dog-day");
 const dogStage = document.getElementById("dog-stage");
 const dogHappiness = document.getElementById("dog-happiness");
+const growthFill = document.getElementById("growth-fill");
 
 const feedButton = document.getElementById("feed-button");
 const playButton = document.getElementById("play-button");
+const nextDayButton = document.getElementById("next-day-button");
+const startOverButton = document.getElementById("start-over-button");
 
 // validateName: trims the spaces at the start and end. If the result is
 // empty or longer than 20 characters, it returns null (not allowed).
@@ -69,22 +79,34 @@ function validateName(rawName) {
 }
 
 // getGrowthStage: turns a day number into a simple word.
-// A new dog is on Day 1, which is the "Puppy" stage.
+// Day 1 = Puppy, Days 2-3 = Young Dog, Day 4 and later = Adult Dog.
 function getGrowthStage(day) {
-  if (day <= 2) {
+  if (day === 1) {
     return "Puppy";
   }
-  if (day <= 4) {
-    return "Teen";
+  if (day <= 3) {
+    return "Young Dog";
   }
-  return "Adult";
+  return "Adult Dog";
 }
 
-// updateHappiness: adds points but never lets happiness go above 100.
+// getGrowthPercent: a number from 0 to 100 used to fill the growth bar.
+// It is only a friendly visual; the word above is the real stage.
+function getGrowthPercent(day) {
+  if (day <= 1) { return 25; }
+  if (day === 2) { return 50; }
+  if (day === 3) { return 75; }
+  return 100;
+}
+
+// updateHappiness: adds points but never lets happiness pass 100 or drop below 0.
 function updateHappiness(amount) {
   myDog.happiness = myDog.happiness + amount;
   if (myDog.happiness > 100) {
     myDog.happiness = 100;       // cap at 100
+  }
+  if (myDog.happiness < 0) {
+    myDog.happiness = 0;         // floor at 0
   }
 }
 
@@ -95,8 +117,23 @@ function renderDog() {
   dogNameDisplay.textContent = myDog.name;
   dogBreed.textContent = myDog.breed;
   dogDay.textContent = myDog.day;
-  dogStage.textContent = getGrowthStage(myDog.day);
+  dogStage.textContent = getGrowthStage(myDog.day);             // text states the stage
   dogHappiness.textContent = myDog.happiness;
+  growthFill.style.width = getGrowthPercent(myDog.day) + "%";    // visual bar
+}
+
+// saveDog: writes the current dog to localStorage as text (JSON).
+function saveDog() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(myDog));
+}
+
+// loadDog: reads the saved dog from localStorage, or null if there is none.
+function loadDog() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === null) {
+    return null;
+  }
+  return JSON.parse(saved);
 }
 
 // adoptDog: runs when the Adopt button/form is used.
@@ -107,7 +144,7 @@ function adoptDog(event) {
   const validName = validateName(dogNameInput.value);
 
   if (validName === null) {
-    // Show a helpful message and stop. We do NOT hide an already-adopted dog.
+    // Show a helpful message and stop. We do NOT change an already-adopted dog.
     nameMessage.textContent = "Please enter a name that is not empty and is 20 characters or fewer.";
     return;
   }
@@ -122,8 +159,33 @@ function adoptDog(event) {
     happiness: 50
   };
 
-  dogCard.hidden = false;        // reveal the dog card
+  saveDog();                     // save right after adoption
+  adoptForm.hidden = true;        // hide the form now that we have a dog
+  dogCard.hidden = false;         // reveal the dog card
   renderDog();
+}
+
+// nextDay: move to the next day. Day +1, happiness -5 (never below 0).
+function nextDay() {
+  if (myDog === null) { return; }
+  myDog.day = myDog.day + 1;
+  updateHappiness(-5);
+  saveDog();                     // save after every day change
+  renderDog();
+}
+
+// startOver: ask before deleting the saved dog and returning to the form.
+function startOver() {
+  const sure = window.confirm("Start over? This will delete your dog and cannot be undone.");
+  if (sure === false) {
+    return;                      // visitor cancelled: keep the dog
+  }
+  localStorage.removeItem(STORAGE_KEY);
+  myDog = null;
+  dogCard.hidden = true;         // hide the dog card
+  adoptForm.hidden = false;      // show the adoption form again
+  dogNameInput.value = "";
+  nameMessage.textContent = "";
 }
 
 // Connect the buttons to their functions.
@@ -132,11 +194,30 @@ adoptForm.addEventListener("submit", adoptDog);
 feedButton.addEventListener("click", function () {
   if (myDog === null) { return; }   // ignore if no dog is adopted yet
   updateHappiness(10);
+  saveDog();                        // save after every Feed
   renderDog();
 });
 
 playButton.addEventListener("click", function () {
   if (myDog === null) { return; }   // ignore if no dog is adopted yet
   updateHappiness(10);
+  saveDog();                        // save after every Play
   renderDog();
 });
+
+nextDayButton.addEventListener("click", nextDay);
+startOverButton.addEventListener("click", startOver);
+
+// Restore a saved dog when the page loads (for example, after a refresh).
+const savedDog = loadDog();
+if (savedDog !== null) {
+  myDog = savedDog;
+  // Make the breed radio match the saved dog, so the form stays consistent.
+  const matchingRadio = adoptForm.querySelector('input[name="breed"][value="' + savedDog.breed + '"]');
+  if (matchingRadio !== null) {
+    matchingRadio.checked = true;
+  }
+  adoptForm.hidden = true;
+  dogCard.hidden = false;
+  renderDog();
+}
