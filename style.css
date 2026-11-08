@@ -1,0 +1,126 @@
+/* Virtual Dog Park styles */
+/* Simple, readable layout that works on both phones and laptops. */
+
+/* box-sizing makes width/padding math easier for beginners. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #2b2b2b;
+  background-color: #f7f5f0;
+}
+
+/* Header */
+.site-header {
+  background-color: #4a7c59;
+  color: #ffffff;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.tagline {
+  margin: 8px 0 0;
+  font-size: 1.1rem;
+}
+
+/* Main content area */
+main {
+  max-width: 960px;       /* keeps lines from getting too wide on big screens */
+  margin: 0 auto;         /* centers the content */
+  padding: 24px 16px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  color: #2f5233;
+  border-bottom: 2px solid #d9e4dc;
+  padding-bottom: 8px;
+}
+
+/* Breed cards laid out in a row on laptops, stacked on phones. */
+.breed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.breed-card {
+  background-color: #ffffff;
+  border: 1px solid #e0ddd5;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.breed-image {
+  width: 160px;
+  height: 160px;
+  max-width: 100%;        /* never grows larger than its container */
+}
+
+.breed-name {
+  margin: 12px 0 8px;
+  color: #2f5233;
+}
+
+.breed-notes {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.breed-notes li {
+  margin-bottom: 8px;
+}
+
+/* Buttons */
+.pet-button {
+  background-color: #4a7c59;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.pet-button:hover {
+  background-color: #3a6347;
+}
+
+.pet-message {
+  min-height: 1.4em;      /* keeps space so text does not jump */
+  margin: 10px 0 0;
+  color: #2f5233;
+  font-weight: bold;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #2f5233;
+  color: #ffffff;
+  text-align: center;
+  padding: 16px;
+}
+
+/* On small screens (like phones), show one card per row. */
+@media (max-width: 700px) {
+  .breed-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header h1 {
+    font-size: 1.6rem;
+  }
+}

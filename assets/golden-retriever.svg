@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Illustration of a Golden Retriever">
+  <!-- soft background -->
+  <rect width="200" height="200" fill="#eaf4ea"/>
+
+  <!-- floppy ears (golden) -->
+  <ellipse cx="52" cy="92" rx="20" ry="42" fill="#d9a441"/>
+  <ellipse cx="148" cy="92" rx="20" ry="42" fill="#d9a441"/>
+
+  <!-- head (golden) -->
+  <circle cx="100" cy="90" r="48" fill="#f0c869"/>
+
+  <!-- eyes -->
+  <circle cx="80" cy="84" r="6" fill="#2b2b2b"/>
+  <circle cx="120" cy="84" r="6" fill="#2b2b2b"/>
+
+  <!-- lighter muzzle -->
+  <ellipse cx="100" cy="112" rx="26" ry="20" fill="#f7d98a"/>
+
+  <!-- nose -->
+  <ellipse cx="100" cy="104" rx="9" ry="7" fill="#2b2b2b"/>
+
+  <!-- smile -->
+  <path d="M100 111 Q100 122 86 122" stroke="#2b2b2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M100 111 Q100 122 114 122" stroke="#2b2b2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

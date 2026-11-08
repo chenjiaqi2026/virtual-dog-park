@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- This meta tag makes the page scale correctly on phones. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Dog Park</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Virtual Dog Park</h1>
+    <p class="tagline">A friendly place to meet a few dog breeds.</p>
+  </header>
+
+  <main>
+    <!-- Welcome section -->
+    <section class="welcome">
+      <h2>Welcome!</h2>
+      <p>
+        Hello and welcome to the Virtual Dog Park. This is a small,
+        beginner-friendly website where you can meet a few dog breeds and
+        read short notes about them. There are no accounts and no downloads
+        here - just dogs.
+      </p>
+      <p class="visit-note">
+        You have opened this page <span id="visit-count">0</span> time(s).
+      </p>
+    </section>
+
+    <!-- Dog Encyclopedia section -->
+    <section class="encyclopedia">
+      <h2>Dog Encyclopedia</h2>
+      <p>Below are three popular breeds. Click "Pet me" to say hello!</p>
+
+      <div class="breed-grid">
+
+        <!-- Beagle -->
+        <article class="breed-card">
+          <img class="breed-image"
+               src="assets/beagle.svg"
+               alt="Illustration of a Beagle" />
+          <h3 class="breed-name">Beagle</h3>
+          <ul class="breed-notes">
+            <li><strong>Size:</strong> Small. Usually 13-15 inches tall and about 20-30 pounds.</li>
+            <li><strong>Personality:</strong> Friendly, curious, and cheerful. Beagles love to sniff and explore.</li>
+            <li><strong>Everyday care:</strong> Needs daily walks and play. Their floppy ears should be checked and cleaned often.</li>
+          </ul>
+          <button class="pet-button" type="button">Pet me</button>
+          <p class="pet-message" aria-live="polite"></p>
+        </article>
+
+        <!-- Golden Retriever -->
+        <article class="breed-card">
+          <img class="breed-image"
+               src="assets/golden-retriever.svg"
+               alt="Illustration of a Golden Retriever" />
+          <h3 class="breed-name">Golden Retriever</h3>
+          <ul class="breed-notes">
+            <li><strong>Size:</strong> Large. Usually 21-24 inches tall and about 55-75 pounds.</li>
+            <li><strong>Personality:</strong> Gentle, smart, and eager to please. Great with families and kids.</li>
+            <li><strong>Everyday care:</strong> Needs exercise and brushing a few times a week to keep the coat tidy.</li>
+          </ul>
+          <button class="pet-button" type="button">Pet me</button>
+          <p class="pet-message" aria-live="polite"></p>
+        </article>
+
+        <!-- Poodle -->
+        <article class="breed-card">
+          <img class="breed-image"
+               src="assets/poodle.svg"
+               alt="Illustration of a Poodle" />
+          <h3 class="breed-name">Poodle</h3>
+          <ul class="breed-notes">
+            <li><strong>Size:</strong> Varies. Standard, Miniature, and Toy sizes all exist.</li>
+            <li><strong>Personality:</strong> Clever, lively, and proud. Poodles learn new tricks quickly.</li>
+            <li><strong>Everyday care:</strong> Curly coat needs regular grooming. Keep nails trimmed and teeth clean.</li>
+          </ul>
+          <button class="pet-button" type="button">Pet me</button>
+          <p class="pet-message" aria-live="polite"></p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with HTML, CSS, and JavaScript. Enjoy the park!</p>
+  </footer>
+
+  <!-- Load the JavaScript at the end so the page is ready first. -->
+  <script src="script.js"></script>
+</body>
+</html>

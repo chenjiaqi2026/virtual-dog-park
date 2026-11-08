@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Illustration of a Poodle">
+  <!-- soft background -->
+  <rect width="200" height="200" fill="#eef0f7"/>
+
+  <!-- curly, drooping ears -->
+  <ellipse cx="54" cy="100" rx="18" ry="40" fill="#e8e3d8"/>
+  <ellipse cx="146" cy="100" rx="18" ry="40" fill="#e8e3d8"/>
+
+  <!-- head (cream) -->
+  <circle cx="100" cy="92" r="46" fill="#f4f0e6"/>
+
+  <!-- topknot curls (the Poodle's signature look) -->
+  <circle cx="80" cy="56" r="14" fill="#f4f0e6"/>
+  <circle cx="100" cy="50" r="15" fill="#f4f0e6"/>
+  <circle cx="120" cy="56" r="14" fill="#f4f0e6"/>
+
+  <!-- eyes -->
+  <circle cx="84" cy="92" r="6" fill="#2b2b2b"/>
+  <circle cx="116" cy="92" r="6" fill="#2b2b2b"/>
+
+  <!-- muzzle -->
+  <ellipse cx="100" cy="112" rx="20" ry="16" fill="#ffffff"/>
+
+  <!-- nose -->
+  <ellipse cx="100" cy="106" rx="8" ry="6" fill="#2b2b2b"/>
+
+  <!-- smile -->
+  <path d="M100 113 Q100 123 88 123" stroke="#2b2b2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M100 113 Q100 123 112 123" stroke="#2b2b2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>
