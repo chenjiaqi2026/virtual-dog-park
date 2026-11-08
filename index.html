@@ -82,6 +82,57 @@
 
       </div>
     </section>
+
+    <!-- My Virtual Dog section (new feature) -->
+    <section class="my-dog">
+      <h2>My Virtual Dog</h2>
+      <p>Pick a breed, give your dog a name, and adopt it. Then feed and play to keep it happy.</p>
+
+      <!-- Adoption form. The form groups the controls and uses labels. -->
+      <form id="adopt-form" class="adopt-form">
+        <fieldset class="breed-choice">
+          <legend>Choose a breed</legend>
+
+          <label class="breed-option">
+            <input type="radio" name="breed" value="Beagle" checked />
+            Beagle
+          </label>
+
+          <label class="breed-option">
+            <input type="radio" name="breed" value="Golden Retriever" />
+            Golden Retriever
+          </label>
+
+          <label class="breed-option">
+            <input type="radio" name="breed" value="Poodle" />
+            Poodle
+          </label>
+        </fieldset>
+
+        <label class="name-label" for="dog-name">Dog name (up to 20 characters):</label>
+        <input class="name-input" id="dog-name" type="text" maxlength="20" />
+
+        <button class="adopt-button" type="submit">Adopt</button>
+
+        <!-- Error message for invalid names. role="alert" helps screen readers. -->
+        <p id="name-message" class="name-message" role="alert"></p>
+      </form>
+
+      <!-- Dog card. Hidden until a dog is adopted. -->
+      <article id="dog-card" class="dog-card" hidden>
+        <h3 id="dog-name-display" class="dog-title"></h3>
+        <ul class="dog-stats">
+          <li><strong>Breed:</strong> <span id="dog-breed"></span></li>
+          <li><strong>Day:</strong> <span id="dog-day"></span></li>
+          <li><strong>Growth stage:</strong> <span id="dog-stage"></span></li>
+          <li><strong>Happiness:</strong> <span id="dog-happiness"></span></li>
+        </ul>
+        <div class="dog-actions">
+          <button id="feed-button" class="care-button" type="button">Feed</button>
+          <button id="play-button" class="care-button" type="button">Play</button>
+        </div>
+      </article>
+    </section>
   </main>
 
   <footer class="site-footer">

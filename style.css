@@ -124,3 +124,112 @@ h2 {
     font-size: 1.6rem;
   }
 }
+
+/* ----- My Virtual Dog section ----- */
+
+.adopt-form {
+  background-color: #ffffff;
+  border: 1px solid #e0ddd5;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 480px;
+}
+
+.breed-choice {
+  border: 1px solid #d9e4dc;
+  border-radius: 8px;
+  margin: 0 0 16px;
+  padding: 12px;
+}
+
+.breed-choice legend {
+  color: #2f5233;
+  font-weight: bold;
+  padding: 0 6px;
+}
+
+.breed-option {
+  display: block;
+  margin: 6px 0;
+  cursor: pointer;
+}
+
+.name-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #2f5233;
+  font-weight: bold;
+}
+
+.name-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #c9c4b8;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.adopt-button {
+  background-color: #4a7c59;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.adopt-button:hover {
+  background-color: #3a6347;
+}
+
+.name-message {
+  color: #b00020;        /* clear red so errors stand out */
+  margin: 10px 0 0;
+  min-height: 1.4em;     /* reserve space so layout does not jump */
+}
+
+/* Dog card shown after adoption */
+.dog-card {
+  background-color: #ffffff;
+  border: 1px solid #e0ddd5;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  max-width: 480px;
+}
+
+.dog-title {
+  margin: 0 0 12px;
+  color: #2f5233;
+}
+
+.dog-stats {
+  text-align: left;
+  padding-left: 20px;
+  margin: 0 0 16px;
+}
+
+.dog-stats li {
+  margin-bottom: 6px;
+}
+
+.dog-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.care-button {
+  background-color: #4a7c59;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.care-button:hover {
+  background-color: #3a6347;
+}
